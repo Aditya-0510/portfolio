@@ -12,24 +12,6 @@ Welcome to my personal portfolio website! This project showcases my skills, proj
 - Project showcase with live links
 - Contact form
 
-## 🔧 Setup & Installation
-1. Clone this repository:
-   ```sh
-   git clone https://github.com/Aditya-0510/portfolio.git
-   ```
-2. Navigate to the project directory:
-   ```sh
-   cd portfolio
-   ```
-3. Install dependencies:
-   ```sh
-   npm install
-   ```
-4. Start the development server:
-   ```sh
-   npm run dev
-   ```
-
 ## 📬 Contact
 Feel free to reach out via:
 - Email: saiaditya6558@gmail.com
