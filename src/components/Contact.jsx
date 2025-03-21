@@ -28,7 +28,7 @@ const Contact = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post("http://localhost:3000/contact", formData);
+      const response = await axios.post("https://my-portfolio-yfpq.onrender.com/contact", formData);
       console.log(response.data);
       setFormData({ name: "", email: "", subject: "", message: "" });
       setSubmitted(true);
