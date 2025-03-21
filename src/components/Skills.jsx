@@ -5,13 +5,13 @@ const Skills = () => {
     const skillCategories = [
         {
           category: "Frontend",
-          icon: <Code size={24} />, // Use a real icon
+          icon: <Code size={24} />,
           skills: ["HTML5", "CSS3", "JavaScript", "React", "Tailwind CSS", "Responsive Design"]
         },
         {
           category: "Backend",
           icon: <Server size={24} />,
-          skills: ["Node.js", "Express", "MongoDB", "RESTful APIs",]
+          skills: ["Node.js", "Express", "RESTful APIs",]
         },
         {
           category: "Tools",

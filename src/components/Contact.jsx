@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Mail, User, MessageSquare, Send, AtSign } from "lucide-react";
+import { Mail, User, MessageSquare, Send, AtSign, Loader } from "lucide-react";
+import axios from "axios";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -9,25 +10,33 @@ const Contact = () => {
     message: "",
   });
 
-  const [submitted, setSubmitted] = useState(false); 
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault(); 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
     if (!formData.name || !formData.email || !formData.message) {
       alert("Please fill in all required fields.");
       return;
     }
 
-    console.log("Form submitted:", formData); // Log data (for testing)
+    setLoading(true);
 
-    setTimeout(() => {
+    try {
+      const response = await axios.post("http://localhost:3000/contact", formData);
+      console.log(response.data);
+      setFormData({ name: "", email: "", subject: "", message: "" });
       setSubmitted(true);
-    }, 1000);
+    } catch (error) {
+      console.error("Error sending email:", error);
+    }
+
+    setLoading(false);
   };
 
   return (
@@ -116,10 +125,24 @@ const Contact = () => {
               <div className="mt-6">
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-2 bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  disabled={loading}
+                  className={`w-full flex items-center justify-center gap-2 py-3 px-4 rounded-md transition-all duration-300 transform focus:outline-none focus:ring-2 ${
+                    loading
+                      ? "bg-blue-500 text-white cursor-not-allowed"
+                      : "bg-blue-600 hover:bg-blue-700 hover:scale-105 text-white"
+                  }`}
                 >
-                  <Send size={20} />
-                  Send Message
+                  {loading ? (
+                    <>
+                      <Loader size={20} className="animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send size={20} />
+                      Send Message
+                    </>
+                  )}
                 </button>
               </div>
             </form>

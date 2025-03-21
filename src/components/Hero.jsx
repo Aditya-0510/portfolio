@@ -30,12 +30,14 @@ const Hero = () => {
 
                 <div className="flex justify-center space-x-4">
                     <motion.a 
-                        href="#contact"
+                        href="/resume.pdf" 
+                        target="_blank"
+                        rel="noopener noreferrer"
                         whileHover={{ scale: 1.1 }} 
                         whileTap={{ scale: 0.95 }}
                         className="bg-blue-500 text-white px-6 py-3 rounded-md font-medium shadow-lg transition duration-300 hover:bg-blue-600 hover:shadow-lg"
                     >
-                        Contact Me
+                        Resume
                     </motion.a>
 
                     <motion.a 
